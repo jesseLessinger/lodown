@@ -1,0 +1,29 @@
+{
+  "name": "lodown-jesselessinger",
+  "version": "1.0.0",
+  "description": "a library like lodash but without underpants",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "instanbul cover _mocha -- test/ -R spec"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jesseLessinger/lodown.git"
+  },
+  "author": "Jesse Lessinger",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jesseLessinger/lodown/issues"
+  },
+  "homepage": "https://github.com/jesseLessinger/lodown#readme",
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "i": "^0.3.6",
+    "istanbul": "^0.4.5",
+    "mocha": "^5.2.0",
+    "sinon": "^7.2.4"
+  }
+}
