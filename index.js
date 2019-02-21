@@ -341,7 +341,7 @@ _.some = function(collection, test) {
  * the function returns and is passed to the next function call. This allows for an action 
  * to be performed across a whole array and a single value returned.
  * 
- * @param {Array or Object} collection: the collection that will be looped through
+ * @param {Array} arr: the array that will be looped through
  * @param {Function} callback: a function that is passed an accumulator,
  * the current element, the current index and the collection as arguements.
  * @param {any type} seed: an optional paramater whose value is assigned to the accumulator before 
@@ -358,7 +358,7 @@ _.reduce = function(arr, callback, seed) {
     }
     
     for(let i = index; i < arr.length; i++) {
-        seed = callback(seed, arr[i], i);
+        seed = callback(seed, arr[i], i, arr);
     }
     
     return seed;
