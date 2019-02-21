@@ -10,6 +10,7 @@
  * @param {Function} action: The Function to be applied to each value in the 
  * collection
  */
+ /*
 function each(collection, action) {
     if(Array.isArray(collection)) {
         for(var i = 0; i < collection.length; i++) {
@@ -23,49 +24,32 @@ function each(collection, action) {
 }
 module.exports.each = each;
 
+*/
 
 var _ = {};
 
 
 /**
 * START OF OUR LIBRARY!
-* Implement each function below it's instructions
 */
 
-/** _.identity
-* Arguments:
-*   1) Any value
-* Objectives:
-*   1) Returns <value> unchanged
-* Examples:
-*   _.identity(5) === 5
-*   _.identity({a: "b"}) === {a: "b"}
-*/
+
+/**
+ * _.identity: Designed to return whatever value it's passed as a single arguement
+ * 
+ * @param {any type} value: the value to be returned
+ */
 
 _.identity = function(value) {
     return value;
 };
 
-
-/** _.typeOf
-* Arguments:
-*   1) Any value
-* Objectives:
-*   1) Return the type of <value> as a string
-*       Types are one of:
-*          - "string"
-*          - "array"
-*          - "object"
-*          - "undefined"
-*          - "number"
-*          - "boolean"
-*          - "null"
-*          - "function"
-* Examples:
-* _.typeOf(134) -> "number"
-* _.typeOf("javascript") -> "string"
-* _.typeOf([1,2,3]) -> "array"
-*/
+ /**
+ * _.typeOf: Designed to return a string represention of whatever 
+ * datatype the function is passed
+ * 
+ * @param {any type} value: the value whose type will be returned
+ */
 
 _.typeOf = function(value) {
     
@@ -80,23 +64,12 @@ _.typeOf = function(value) {
     }
 };
 
-/** _.first
-* Arguments:
-*   1) An array
-*   2) A number
-* Objectives:
-*   1) If <array> is not an array, return []
-*   2) If <number> is not given or not a number, return just the first element in <array>.
-*   3) Otherwise, return the first <number> items of <array>
-* Edge Cases:
-*   1) What if <number> is negative?
-*   2) What if <number> is greater than <array>.length?
-* Examples:
-*   _.first("ponies", 1) -> []
-*   _.first(["a", "b", "c"], "ponies") -> "a"
-*   _.first(["a", "b", "c"], 1) -> "a"
-*   _.first(["a", "b", "c"], 2) -> ["a", "b"]
-*/
+/**
+ * _.first: designed to return an array containing the first (n) elements of a given array.
+ * 
+ * @param {Array} arr: the array from which the first (n) elements will be found
+ * @param {Number} n: the number of element to include in the output array
+ */
 
 _.first = function(arr, n) {
     if (!Array.isArray(arr) || n < 0) {
@@ -117,23 +90,13 @@ _.first = function(arr, n) {
     return results;
 };
 
-/** _.last
-* Arguments:
-*   1) An array
-*   2) A number
-* Objectives:
-*   1) If <array> is not an array, return []
-*   2) If <number> is not given or not a number, return just the last element in <array>.
-*   3) Otherwise, return the last <number> items of <array>
-* Edge Cases:
-*   1) What if <number> is negative?
-*   2) What if <number> is greater than <array>.length?
-* Examples:
-*   _.last("ponies", 2) -> []
-*   _.last(["a", "b", "c"], "ponies") -> "c"
-*   _.last(["a", "b", "c"], 1) -> "c"
-*   _.last(["a", "b", "c"], 2) -> ["b", "c"]
-*/
+
+/**
+ * _.last: designed to return an array containing the last (n) elements of a given array.
+ * 
+ * @param {Array} arr: the array from which the last (n) elements will be found
+ * @param {Number} n: the number of element to include in the output array
+ */
 
 _.last = function(arr, n) {
      if (!Array.isArray(arr) || n < 0) {
@@ -142,8 +105,8 @@ _.last = function(arr, n) {
     if (n === undefined || typeof n !== 'number') {
         return arr[arr.length-1];
     }
-    if (n > arr.length) {
-        n = arr.length;
+    if (n >= arr.length) {
+       return arr;
     }
     
     let results = [];
@@ -154,21 +117,13 @@ _.last = function(arr, n) {
     return results;
 };
 
-/** _.indexOf
-* Arguments:
-*   1) An array
-*   2) A value
-* Objectives:
-*   1) Return the index of <array> that is the first occurrance of <value>
-*   2) Return -1 if <value> is not in <array>
-*   3) Do not use [].indexOf()!
-* Edge Cases:
-*   1) What if <array> has multiple occurances of val?
-*   2) What if <val> isn't in <array>?
-* Examples:
-*   _.indexOf(["a","b","c"], "c") -> 2
-*   _.indexOf(["a","b","c"], "d") -> -1
-*/
+/**
+ * _.indexOf: returns the index of a given element in a given array or -1 if the elemement is not found 
+ * 
+ * @param {Array} arr: the array that will be looked through.
+ * @param {any type} value: the element that is sought in the array.
+ */
+
 _.indexOf = function(arr, value) {
     for(let i = 0; i < arr.length; i++) {
         if (arr[i] === value) {
@@ -178,20 +133,14 @@ _.indexOf = function(arr, value) {
     return -1;
 };
 
-/** _.contains
-* Arguments:
-*   1) An array
-*   2) A value
-* Objectives:
-*   1) Return true if <array> contains <value>
-*   2) Return false otherwise
-*   3) You must use the ternary operator in your implementation.
-* Edge Cases:
-*   1) did you use === ?
-*   2) what if no <value> is given?
-* Examples:
-*   _.contains([1,"two", 3.14], "two") -> true
-*/
+
+/**
+ * _.contains: returns true if a given value is found in a given array 
+ * or false if it is not found
+ * 
+ * @param {arr} arr: the given array to look through
+ * @param {any type} value: the value being looked for
+ */
 
 _.contains = function(arr, value) {
     
@@ -205,78 +154,57 @@ _.contains = function(arr, value) {
     
 };
 
-/** _.each
-* Arguments:
-*   1) A collection
-*   2) A function
-* Objectives:
-*   1) if <collection> is an array, call <function> once for each element
-*      with the arguments:
-*         the element, it's index, <collection>
-*   2) if <collection> is an object, call <function> once for each property
-*      with the arguments:
-*         the property's value, it's key, <collection>
-* Examples:
-*   _.each(["a","b","c"], function(e,i,a){ console.log(e)});
-*      -> should log "a" "b" "c" to the console
-*/
+/**
+ * _.each: loops through a collection and calls a given function for each element in the collection
+ * 
+ * @param {Array or Object} collection: the collection that will be looped thru
+ * @param {Function} callback: the function to be called in the loop which will be passed
+ * the current element, the current index and the collection.
+ */
 
 _.each = function(collection, callback) {
     
-    if (Array.isArray(collection)) {
-        for (let i = 0; i < collection.length; i++) {
-            callback(collection[i], i, collection);
+        if (Array.isArray(collection)) {
+            for (let i = 0; i < collection.length; i++) {
+                callback(collection[i], i, collection);
+            }
+        } else {
+            console.log(collection);
+            for (let key in collection) {
+                callback(collection[key], key, collection);
+            }
         }
-    } else {
-        for (let key in collection) {
-            callback(collection[key], key, collection);
-        }
-    }
     
     
 };
 
-/** _.unique
-* Arguments:
-*   1) An array
-* Objectives:
-*   1) Return a new array of all elements from <array> with duplicates removed
-*   2) Use _.indexOf() from above
-* Examples:
-*   _.unique([1,2,2,4,5,6,5,2]) -> [1,2,4,5,6]
-*/
+
+/**
+ * _.unique: returns an array of unique values in a given array 
+ * (i.e. removes duplicate elements) 
+ * 
+ * @param {Array} arr: the source array which will not be modified
+ */
+
 
 _.unique = function(arr) {
     
-    return arr.filter((elem, index, array) => {
-        for(let i = index-1; i > -1; i-- ){
-            if (elem === array[i]) {
-                return false;
-            }
-        }
-        return true; 
+    return _.filter(arr, (elem, index, array) => {
+        return _.indexOf(array, elem) == index;
     })
     
     
 };
 
 
-
-/** _.filter
-* Arguments:
-*   1) An array
-*   2) A function
-* Objectives:
-*   1) call <function> for each element in <array> passing the arguments:
-*      the element, it's index, <array>
-*   2) return a new array of elements for which calling <function> returned true
-* Edge Cases:
-*   1) What if <function> returns something other than true or false?
-* Examples:
-*   _.filter([1,2,3,4,5], function(x){return x%2 === 0}) -> [2,4]
-* Extra Credit:
-*   use _.each in your implementation
-*/
+/**
+ * _.filter: returns a new array of elements by looping thru a given array only 
+ * when a given function returns true
+ * 
+ * @param {Array} arr: the source array which will not be modified
+ * @param {Function} callback: a function which is expected to return a boolean
+ * and is passed the current element, current index and the array 
+ */
 
 _.filter = function(arr, callback) {
     let results = [];
@@ -290,50 +218,38 @@ _.filter = function(arr, callback) {
     return results;
 };
 
-/** _.reject
-* Arguments:
-*   1) An array
-*   2) A function
-* Objectives:
-*   1) call <function> for each element in <array> passing the arguments:
-*      the element, it's index, <array>
-*   2) return a new array of elements for which calling <function> returned false
-*   3) This is the logical inverse if _.filter(), you must use _.filter() in your implementation
-* Examples:
-*   _.reject([1,2,3,4,5], function(e){return e%2 === 0}) -> [1,3,5]
-*/
+
+/**
+ * _.reject: returns a new array of elements by looping thru a given array only 
+ * when a given function returns false. 
+ *  
+ * @param {Array} arr: the source array which will not be modified
+ * @param {Function} callback: a function which is expected to return a boolean
+ * and is passed the current element, current index and the array 
+ */
 
 _.reject = function(arr, callback) {
-    let results = [];
-    
-    for (let i = 0; i < arr.length; i++) {
-        if (!callback(arr[i], i, arr)) {
-            results.push(arr[i]);
-        }
-    }
-    
-    return results;
+  
+  return _.filter(arr, (e,i,arr)=>{
+      return !callback(e,i,arr);
+  })
+   
+   
     
 };
 
-/** _.partition
-* Arguments:
-*   1) An array
-*   2) A function
-* Objectives:
-*   1) Call <function> for each element in <array> passing it the arguments:
-*       element, key, <array>
-*   2) Return an array that is made up of 2 sub arrays:
-*       0) An array that contains all the values for which <function> returned something truthy
-*       1) An array that contains all the values for which <function> returned something falsy
-* Edge Cases:
-*   1) This is going to return an array of arrays.
-* Examples:
-*   _.partition([1,2,3,4,5], function(element,index,arr){
-*     return element % 2 === 0;
-*   }); -> [[2,4],[1,3,5]]
-}
-*/
+
+/**
+ * _.partition: returns an array of 2 elements, the first element is an array of elements 
+ * that passed a given test function for each element in a giving array, the second
+ * is all the elements which were rejected by the test function (i.e. returned false)
+ * 
+ * @param {Array} arr: the source array which is not modified
+ * @param {Function} callback: a function which is expected to return a boolean
+ * and is passed the current element, current index and the array. 
+ * When callback returns true the element is put in first array, when false the element
+ * is put in the second array
+ */
 
 _.partition = function(arr, callback) {
     
@@ -341,48 +257,33 @@ _.partition = function(arr, callback) {
     
 };
 
-/** _.map
-* Arguments:
-*   1) A collection
-*   2) a function
-* Objectives:
-*   1) call <function> for each element in <collection> passing the arguments:
-*        if <collection> is an array:
-*            the element, it's index, <collection>
-*        if <collection> is an object:
-*            the value, it's key, <collection>
-*   2) save the return value of each <function> call in a new array
-*   3) return the new array
-* Examples:
-*   _.map([1,2,3,4], function(e){return e * 2}) -> [2,4,6,8]
-*/
+/**
+ * _.map: returns a new array filled with a value from a given function which is applied
+ * to each element in the given array.
+ * 
+ * @param {Array} arr: the source array which will not be modified
+ * @param {Function} callback: a function which returns the new value to be added to the new
+ * array. It is passed the current element, current index and the original array 
+ */
+
 
 _.map = function(collection, callback) {
     let results = []; 
-      
-    if (Array.isArray(collection)) {
-        for (let i = 0; i < collection.length; i++) {
-            results.push(callback(collection[i], i, collection));
-        }
-    } else {
-        for (let key in collection) {
-            results.push(callback(collection[key], key, collection));
-        }
-    }
+    
+    _.each(collection, (e,i,c) =>{
+        results.push(callback(e,i,c));
+    })
     
     return results;
 }
 
-/** _.pluck
-* Arguments:
-*   1) An array of objects
-*   2) A property
-* Objectives:
-*   1) Return an array containing the value of <property> for every element in <array>
-*   2) You must use _.map() in your implementation.
-* Examples:
-*   _.pluck([{a: "one"}, {a: "two"}], "a") -> ["one", "two"]
-*/
+/**
+ * _.pluck: loops through an array of objects and creates a new array with the value at
+ * a given keys for each object
+ * 
+ * @param {Array (of Objects)} arr: the original array which will not be modified
+ * @param {String} key: the key for the property values which will fill the new array   
+ */
 
 _.pluck = function(arr, key) {
     return _.map(arr,(obj) =>{
@@ -390,125 +291,63 @@ _.pluck = function(arr, key) {
     })
 };
 
-/** _.every
-* Arguments:
-*   1) A collection
-*   2) A function
-* Objectives:
-*   1) Call <function> for every element of <collection> with the paramaters:
-*      if <collection> is an array:
-*          current element, it's index, <collection>
-*      if <collection> is an object:
-*          current value, current key, <collection>
-*   2) If the return value of calling <function> for every element is true, return true
-*   3) If even one of them returns false, return false
-*   4) If <function> is not provided, return true if every element is truthy, otherwise return false
-* Edge Cases:
-*   1) what if <function> doesn't return a boolean
-*   2) What if <function> is not given?
-* Examples:
-*   _.every([2,4,6], function(e){return e % 2 === 0}) -> true
-*   _.every([1,2,3], function(e){return e % 2 === 0}) -> false
-*/
+/**
+ * _.every: calls a given function for each element in a given array or each property of a 
+ * given object and returns true only if the function returns true for every element/property
+ * 
+ * @param {Array or Object} collection: the collection that will be looped through
+ * @param {Function} test: a function that returns a boolean and is passed
+ * the current element, the current index and the collection as arguements.
+ */
 
-_.every = function(collection, callback) {
-    
+_.every = function(collection, test) {
+   
+   if (test === undefined) test = _.identity;
+   
+   let success = true; 
+   _.each(collection, (elem, indx, col)=>{
+       if (!test(elem,indx, col)) success = false;
+   })
+   
+   return success;
       
-    if (Array.isArray(collection)) {
-        for (let i = 0; i < collection.length; i++) {
-            if (callback === undefined) {
-                if (!collection[i]) {
-                    return false;
-                }
-            }
-            else if(!callback(collection[i], i, collection)) {
-                return false;
-            }
-        }
-    } else {
-        for (let key in collection) {
-            if (callback === undefined) {
-                if (!collection[key]) {
-                    return false;
-                }
-            }
-            if(!callback(collection[key], key, collection)) {
-                return false;
-            }
-        }
-    }
-    
-    return true;
 };
 
-/** _.some
-* Arguments:
-*   1) A collection
-*   2) A function
-* Objectives:
-*   1) Call <function> for every element of <collection> with the paramaters:
-*       if <collection> is an array:
-*        current element, it's index, <collection>
-*       if <collection> is an object:
-*        current value, current key, <collection>
-*   2) If the return value of calling <function> is true for at least one element, return true
-*   3) If it is false for all elements, return false
-*   4) If <function> is not provided return true if at least one element is truthy, otherwise return false
-* Edge Cases:
-*   1) what if <function> doesn't return a boolean
-*   2) What if <function> is not given?
-* Examples:
-*   _.some([1,3,5], function(e){return e % 2 === 0}) -> false
-*   _.some([1,2,3], function(e){return e % 2 === 0}) -> true
-*/
+/**
+ * _.some: calls a given function for each element in an array or each property of an 
+ * object and returns true if the function returns true at least once.
+ * 
+ * @param {Array or Object} collection: the collection that will be looped through
+ * @param {Function} test: a function that returns a boolean and is passed
+ * the current element, the current index and the collection as arguements.
+ */
 
-_.some = function(collection, callback) {
+_.some = function(collection, test) {
     
-    if (Array.isArray(collection)) {
-        for (let i = 0; i < collection.length; i++) {
-            if (callback === undefined) {
-                if (collection[i]) {
-                    return true;
-                }
-            }
-            else if(callback(collection[i], i, collection)) {
-                return true;
-            }
-        }
-    } else {
-        for (let key in collection) {
-            if (callback === undefined) {
-                if (collection[key]) {
-                    return true;
-                }
-            }
-            if(callback(collection[key], key, collection)) {
-                return true;
-            }
-        }
-    }
-    
-    return false;
+    if (test === undefined) test = _.identity;
+   
+   let success = false; 
+   _.each(collection, (elem, indx, col)=>{
+       if (test(elem,indx, col)) success = true;
+   })
+   
+   return success;
+  
 };
 
-/** _.reduce
-* Arguments:
-*   1) An array
-*   2) A function
-*   3) A seed
-* Objectives:
-*   1) Call <function> for every element in <collection> passing the arguments:
-*         previous result, element, index
-*   2) Use the return value of <function> as the "previous result"
-*      for the next iteration
-*   3) On the very first iteration, use <seed> as the "previous result"
-*   4) If no <seed> was given, use the first element/value of <collection> as <seed> and continue to the next element
-*   5) After the last iteration, return the return value of the final <function> call
-* Edge Cases:
-*   1) What if <seed> is not given?
-* Examples:
-*   _.reduce([1,2,3], function(previousSum, currentValue, currentIndex){ return previousSum + currentValue }, 0) -> 6
-*/
+/**
+ * _.reduce: for each element in an array or property in an object performs a given function
+ * which has access to both looping collection and an additional accumulator, which stores the value 
+ * the function returns and is passed to the next function call. This allows for an action 
+ * to be performed across a whole array and a single value returned.
+ * 
+ * @param {Array or Object} collection: the collection that will be looped through
+ * @param {Function} callback: a function that is passed an accumulator,
+ * the current element, the current index and the collection as arguements.
+ * @param {any type} seed: an optional paramater whose value is assigned to the accumulator before 
+ * the loop starts. If ommitted the accumulator is set the first element/property and the loop starts 
+ * at the second.
+ */
 
 _.reduce = function(arr, callback, seed) {
     
@@ -526,20 +365,13 @@ _.reduce = function(arr, callback, seed) {
     
 };
 
-/** _.extend
-* Arguments:
-*   1) An Object
-*   2) An Object
-*   ...Possibly more objects
-* Objectives:
-*   1) Copy properties from <object 2> to <object 1>
-*   2) If more objects are passed in, copy their properties to <object 1> as well, in the order they are passed in.
-*   3) Return the update <object 1>
-* Examples:
-*   var data = {a:"one"};
-*   _.extend(data, {b:"two"}); -> data now equals {a:"one",b:"two"}
-*   _.extend(data, {a:"two"}); -> data now equals {a:"two"}
-*/
+/**
+ * _.extend: adds all the properties of any number of objects to a target object
+ * 
+ * @param {Object} targetObj: the object to be filled with the properties of the other Objects
+ * @params {Objects} objs: any number of objects (each passed as a separate arguements) whose properties 
+ * will be added to the target object
+ */
 
 _.extend = function(targetObj, ...objs) {
     _.each(objs, (sourceObj)=>{
@@ -553,7 +385,7 @@ _.extend = function(targetObj, ...objs) {
 
 
 //////////////////////////////////////////////////////////////////////
-// DON'T REMOVE THIS CODE ////////////////////////////////////////////
+// ADD OUR LIBRARY TO EXPORT ////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
 
 if((typeof process !== 'undefined') &&
