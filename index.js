@@ -169,7 +169,6 @@ _.each = function(collection, callback) {
                 callback(collection[i], i, collection);
             }
         } else {
-            console.log(collection);
             for (let key in collection) {
                 callback(collection[key], key, collection);
             }
